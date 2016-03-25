@@ -131,7 +131,7 @@ class Email(models.Model):
         if connection and disconnect_after_delivery:
             connection.close()
 
-        self.status = status
+        # self.status = status
         self.save()
 
         # If log level is 0, log nothing, 1 logs only sending failures
