@@ -14,7 +14,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={'': ['README.rst']},
-    install_requires=['django>=1.4', 'jsonfield'],
+    install_requires=['django>=1.4', 'jsonfield', "git+https://github.com/cyberbudy/django-tinymce-4/tree/master/tinymce_4"],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
