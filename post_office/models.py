@@ -49,7 +49,7 @@ class Email(models.Model):
     bcc = CommaSeparatedEmailField(("Bcc"))
     subject = models.CharField(_("Subject"), max_length=989, blank=True)
     message = models.TextField(_("Message"), blank=True)
-    html_message = models.TinyMCEModelDefaultField(_("HTML Message"), blank=True)
+    html_message = TinyMCEModelDefaultField(_("HTML Message"), blank=True)
     """
     Emails with 'queued' status will get processed by ``send_queued`` command.
     Status field will then be set to ``failed`` or ``sent`` depending on
@@ -186,7 +186,7 @@ class EmailTemplate(models.Model):
         verbose_name=_("Subject"), validators=[validate_template_syntax])
     content = models.TextField(blank=True,
         verbose_name=_("Content"), validators=[validate_template_syntax])
-    html_content = models.TinyMCEModelDefaultField(blank=True,
+    html_content = TinyMCEModelDefaultField(blank=True,
         verbose_name=_("HTML content"), validators=[validate_template_syntax])
     language = models.CharField(max_length=12, choices=settings.LANGUAGES,
         help_text=_("Render template in alternative language"),
