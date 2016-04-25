@@ -124,14 +124,14 @@ class Email(models.Model):
             message = ''
             exception_type = ''
         except Exception as e:
-            status = STATUS.failed
+            status = STATUS.queued
             message = str(e)
             exception_type = type(e).__name__
 
         if connection and disconnect_after_delivery:
             connection.close()
 
-        # self.status = status
+        self.status = status
         self.save()
 
         # If log level is 0, log nothing, 1 logs only sending failures
