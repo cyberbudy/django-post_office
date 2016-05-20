@@ -4,7 +4,7 @@ from uuid import uuid4
 
 from collections import namedtuple
 
-from django.conf import settings
+from django.conf import settings, global_settings
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -188,7 +188,7 @@ class EmailTemplate(models.Model):
         verbose_name=_("Content"), validators=[validate_template_syntax])
     html_content = TinyMCEModelDefaultField(blank=True,
         verbose_name=_("HTML content"), validators=[validate_template_syntax])
-    language = models.CharField(max_length=12, choices=settings.LANGUAGES,
+    language = models.CharField(max_length=12, choices=global_settings.LANGUAGES,
         help_text=_("Render template in alternative language"),
         default='', blank=True)
     default_template = models.ForeignKey('self', related_name='translated_templates',
