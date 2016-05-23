@@ -59,13 +59,11 @@ def create(sender, recipients=None, cc=None, bcc=None, subject='', message='',
             headers=headers, priority=priority, status=status,
             context=context, template=template, backend_alias=backend
         )
-
     else:
-
         if template:
             subject = template.subject
             message = template.content
-            html_message = template.html_content
+            html_message = "<div>"+template.html_content+"</div>"
 
         _context = Context(context or {})
         subject = Template(subject).render(_context)
